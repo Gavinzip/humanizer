@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace-manifest.json",
+  "name": "humanizer",
+  "owner": {
+    "name": "Gavinzip",
+    "url": "https://github.com/Gavinzip"
+  },
+  "plugins": [
+    {
+      "name": "humanizer",
+      "source": "./",
+      "description": "Natural prose with integrated writing-style references and scoped feedback learning."
+    }
+  ],
+  "description": "Humanizer with integrated writing-style references and scoped user-feedback learning."
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "humanizer",
+  "description": "Natural prose with integrated writing-style references and scoped feedback learning.",
+  "version": "3.0.0",
+  "author": {
+    "name": "Gavinzip",
+    "url": "https://github.com/Gavinzip"
+  },
+  "homepage": "https://github.com/Gavinzip/humanizer",
+  "repository": "https://github.com/Gavinzip/humanizer",
+  "license": "MIT",
+  "keywords": [
+    "writing",
+    "editing",
+    "feedback",
+    "writing-style",
+    "humanize"
+  ]
+}

@@ -1,0 +1,10 @@
+profile/
+outputs/
+work/
+.DS_Store
+__pycache__/
+*.pyc
+*.tmp
+.env
+.env.*
+.profile-source.json

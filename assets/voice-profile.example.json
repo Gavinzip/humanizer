@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "owner_id": "my-writing-profile",
+  "revision": 0,
+  "defaults": {
+    "language": "preserve-input",
+    "feedback_persistence_authorized": false,
+    "detector_checks": {
+      "enabled": false,
+      "authorization": "none",
+      "models": ["v3short", "v3", "v2"],
+      "target_ai_probability": 0.05
+    }
+  },
+  "preferences": []
+}

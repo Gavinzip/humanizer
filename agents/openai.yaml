@@ -1,0 +1,6 @@
+interface:
+  display_name: "Humanizer"
+  short_description: "參考適合作品，依使用者回饋學習語氣、說明順序與內容的寫作技能"
+  default_prompt: "用 $humanizer 參考我的同類作品與已確認偏好修整這段文字，保留事實，並學習我提供的修改邏輯。"
+policy:
+  allow_implicit_invocation: true
