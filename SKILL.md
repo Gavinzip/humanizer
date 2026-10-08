@@ -9,7 +9,7 @@ description: |
   V3 short-text, V3, and V2 checks. Review-only requests stay review-only.
 license: MIT
 metadata:
-  version: "3.0.1"
+  version: "3.0.2"
 ---
 
 # Humanizer: Writing Style and Feedback Learning
@@ -23,6 +23,8 @@ If `.profile-source.json` exists, resolve its `profile` path and read that JSON 
 A supplied sufficient draft or designated example is the first style reference. Read [writing-style.md](references/writing-style.md) before using prior-writing evidence: select comparable audience/medium/purpose, retrieve only through actual available tools when needed, and inspect usable content before composing. Never claim a retrieval happened from a tool name or sample title alone. This workflow is built into Humanizer; an additional Writing Style invocation is optional.
 
 Use [feedback-learning.md](references/feedback-learning.md) when the user corrects the voice or asks to improve Humanizer. Capture the original/correction, the relationship it repairs, its scope, and acceptance status. Transfer the function to new content, not a fixed replacement dictionary. Persist feedback only with applicable user authorization. `scripts/feedback.py` handles storage and selection; the editing agent owns interpretation and prose.
+
+使用者可以直接回饋用詞、語氣、句子銜接、說明順序或內容比重，也可以提供自己的改寫。先處理當次稿件；取得保存授權後，把可重用、已確認的偏好留在這位使用者自己的 profile，之後寫同類內容前讀取並沿用。明確要求「記住我的寫作偏好，之後沿用」可作為適用範圍內的持續保存授權，依 [feedback-learning.md](references/feedback-learning.md) 記錄。不要每輪重問，也不要把代理推測、單次稿件事實或另一個人的風格當成已學會的偏好。
 
 ## Editing Contract
 

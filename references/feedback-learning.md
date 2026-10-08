@@ -25,7 +25,11 @@
 
 ## 操作
 
-每位使用者使用各自的 profile 路徑與 `owner_id`，不讀取另一位使用者的檔案。預設的 `profile/` 不進公開 Git。第一次經授權初始化：
+每位使用者使用各自的 profile 路徑與 `owner_id`，不讀取另一位使用者的檔案。預設的 `profile/` 不進公開 Git。
+
+使用者明確說「記住我的寫作偏好，之後同類內容沿用」時，編輯代理可在這位使用者的 profile 把 `defaults.feedback_persistence_authorized` 設為 `true`，並依回饋紀錄保留原話與適用範圍。這只授權保存可重用的寫作偏好，不授權外部檢測或提交到公開 repo；已有適用授權時不再重問。當次要求不保存時不寫入；使用者撤回持續授權時把該欄位設回 `false`。
+
+第一次經授權初始化：
 
 ```bash
 python3 scripts/feedback.py init --owner-id my-writing-profile

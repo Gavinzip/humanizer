@@ -1,6 +1,8 @@
 # Humanizer — Writing Style 與回饋學習
 
-一個可安裝的寫作技能：先參考這次適合的作品，再用目前使用者已確認的回饋調整語氣、說明順序和內容。通用編輯規則與各人的 profile 分開；預設沒有任何人的預填偏好。
+Humanizer 是一個能依你的回饋調整寫作風格的技能。寫報告、心得、文案或講稿時，你都可以直接告訴它哪裡不像自己，也可以貼上你會怎麼改。它會先修好這次的內容；你同意保存後，再把確認的偏好整理成你自己的寫作設定，之後寫同類內容時接著沿用。
+
+回饋可以是用詞、語氣、句子怎麼接，也可以是「這篇應該多寫學到什麼」這種內容方向。它會理解修改背後的表達邏輯，累積你認可的寫法，讓後續稿件逐步更貼近你的風格。每位使用者都有各自的設定，心得、工作訊息和講稿也能分別調整。
 
 此版由 MIT 授權的 `blader/humanizer` 2.9.1 與本機 2.15.0 擴充版整理而來，保留原始授權及 33 項模式。本專案獨立維護版本，沒有重新訓練模型，也不保證外部偵測器的結果。
 
@@ -13,6 +15,21 @@
 用 $humanizer 學習我這次的修改邏輯，之後同類心得沿用。
 用 $humanizer 檢查哪裡難懂，只提意見，先不要改檔案。
 ```
+
+## 直接回饋，逐步建立自己的風格
+
+你不用一次把風格描述完整。可以邊寫邊回饋，例如：
+
+```text
+這句太正式，我會這樣寫：……
+這裡要先交代原因，後面的例子才接得上。
+這篇給同事看，語氣直接一點，先寫接下來要做什麼。
+這次修改我喜歡，之後同類文案沿用這種語氣。
+```
+
+如果希望以後也記得，可以先說：「記住我的寫作偏好，之後同類內容沿用。」授權後，直接修改或明確認可的偏好會保存到你自己的本機 profile；後續可繼續回饋、調整或取消舊做法。代理推測出的習慣會先保留為候選，等你認可才套用。
+
+保存的是可重用的寫作選擇與適用情境。你的個人設定不會提交到這個公開 repo，也不會套用到其他使用者。要讓下一次接續使用，請保留自己的 `profile/` 資料夾；單次稿件的事實、引用內容和帳號資訊不會當成寫作偏好。
 
 ## 中文三模型檢測：V3 短文本、V3、V2
 
@@ -126,6 +143,7 @@ claude plugin validate .
 
 ## Version History
 
+- **3.0.2** - Clarified how users give feedback, authorize persistent preferences, and build their own scoped writing style; made this workflow visible in the introduction and skill entrypoint. Existing storage and detector code remain unchanged.
 - **3.0.1** - Made the hosted Chinese V3 short-text, V3 and V2 workflow visible in the skill entrypoint and sharing instructions; documented Python requirements, full-package sharing and per-user submission authorization. Measurement code and existing voice profiles remain unchanged.
 - **3.0.0** - Integrated Writing Style reference selection and inspect-before-compose workflow; added scoped persistent profiles, explicit feedback states, owner isolation, and deterministic save/render helpers. Public package starts with no personal profile and requires authorization for external checks. Retains the canonical 33-pattern catalog.
 
