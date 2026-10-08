@@ -14,6 +14,29 @@
 用 $humanizer 檢查哪裡難懂，只提意見，先不要改檔案。
 ```
 
+## 中文三模型檢測：V3 短文本、V3、V2
+
+分享版已包含檢測流程和 [check-detector.py](scripts/check-detector.py)，主技能的「中文檢測」一節也直接列出三個模型。完整對應與規則在 [detector-checks.md](references/detector-checks.md)。分享時保留整個技能資料夾，不能只複製 `SKILL.md`。
+
+目前透過 Python 腳本呼叫 [Hugging Face 官方線上版](https://huggingface.co/spaces/yuchuantian/AIGC_text_detector) 的 API，模型在對方伺服器執行。使用者端需要 Python 3.10 以上和網路；不用下載模型、安裝 PyTorch 或準備 GPU。腳本測分數，使用技能的編輯代理負責修稿。
+
+可直接這樣呼叫，這段指令同時授權提交本次正文：
+
+```text
+用 $humanizer 修改這篇中文文章，保留原意。
+我同意把這篇待交付正文送到 Hugging Face 官方 AIGC_text_detector，
+用中文 V3 短文本、V3、V2 檢測並反覆修改，
+直到每個完整區段在三個模型的 AI 類別分數都低於 5%。
+```
+
+第一次尚未取得提交授權時，技能會先說明服務與提交範圍。若對方選擇未來也沿用，可保存到對方自己的 profile；不沿用其他人的授權或個人語氣。服務不可用時明確記錄未完成，分數達標也不保證其他工具的結果。
+
+已授權的正文可用以下指令實測；預設測全部三個模型，長文章按區段完整涵蓋：
+
+```bash
+python3 scripts/check-detector.py path/to/copy.txt --split-long --output path/to/final-evidence.json
+```
+
 ## 怎麼學習
 
 - Writing Style 流程已內建：使用已提供的合適樣本；需要時透過實際可用的 search/retrieve 讀同類作品。沒有工具就說明限制，不假裝讀過。
@@ -103,6 +126,7 @@ claude plugin validate .
 
 ## Version History
 
+- **3.0.1** - Made the hosted Chinese V3 short-text, V3 and V2 workflow visible in the skill entrypoint and sharing instructions; documented Python requirements, full-package sharing and per-user submission authorization. Measurement code and existing voice profiles remain unchanged.
 - **3.0.0** - Integrated Writing Style reference selection and inspect-before-compose workflow; added scoped persistent profiles, explicit feedback states, owner isolation, and deterministic save/render helpers. Public package starts with no personal profile and requires authorization for external checks. Retains the canonical 33-pattern catalog.
 
 ## Attribution and License

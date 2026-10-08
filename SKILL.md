@@ -5,10 +5,11 @@ description: |
   relevant writing samples and the current user's confirmed feedback.
   Use for humanize, 去 AI 味, 自然一點, 像我講話, or learning a user's wording
   and explanation preferences. Integrates Writing Style reference selection
-  and scoped, persistent voice profiles. Review-only requests stay review-only.
+  and scoped, persistent voice profiles. Includes authorized hosted Chinese
+  V3 short-text, V3, and V2 checks. Review-only requests stay review-only.
 license: MIT
 metadata:
-  version: "3.0.0"
+  version: "3.0.1"
 ---
 
 # Humanizer: Writing Style and Feedback Learning
@@ -49,6 +50,20 @@ Distinguish the author's writing, their direct corrections, selected assistant c
 With no applicable sample or confirmed preference, use a plain register appropriate to the task; do not claim personal calibration. Preserve genuine connective language and mixed rhythm. Avoid artificial mistakes, arbitrary whitespace, forced questions, repeated openings, and obligatory takeaways.
 
 External detector checks require the current user's applicable authorization. The public edition has no standing submission default. A private profile may explicitly enable the documented workflow; a current opt-out wins. Report actual measurements and full coverage outside the copy. Detector results do not establish authorship or the user's acceptance.
+
+## 中文檢測：V3 短文本、V3、V2
+
+中文交付稿的預設檢測組合是 **中文 V3 短文本、中文 V3、中文 V2**，每個完整受測區段在三個模型的 AI 類別分數都須 **低於 5%**。V3 短文本的模型 ID 是 `yuchuantian/AIGC_detector_zhv3short`；完整模型對應和執行規則見 [detector-checks.md](references/detector-checks.md)，檢測前先讀這份文件。
+
+公開版和私人版都附有 [check-detector.py](scripts/check-detector.py)。它用 Python 3.10 以上的標準函式庫呼叫 [Hugging Face 官方線上版](https://huggingface.co/spaces/yuchuantian/AIGC_text_detector) 的 Gradio API，模型在對方伺服器執行；本機不用下載模型或 tokenizer，也不需要 GPU。腳本只取得分數，文章仍由編輯代理依原意和使用者回饋修改。
+
+首次使用時，先確認目前使用者是否已授權把待交付正文提交至這個服務。沒有適用授權時，說明服務和提交範圍並取得一次授權；可按對方明確選擇，將未來適用範圍保存到對方自己的 profile。已有授權就直接執行，不必每輪重問。只送授權正文，不送個人 profile、參考作品或無關素材；當次要求不測或只評論時依其要求。
+
+```bash
+python3 scripts/check-detector.py path/to/copy.txt --split-long --output path/to/final-evidence.json
+```
+
+這個指令預設跑全部三個模型。按有意義的段落涵蓋全文，依實際結果修稿，再驗證最終文字；不得只測開頭或只看 V3 短文本。服務失敗時保留已完成證據並說明未完成項目，不把失敗當零分，也不換成臆測的分數。交付時把分數放在正文之外，不承諾其他偵測器的結果。
 
 ## PERSONALITY AND SOUL
 
